@@ -20,6 +20,23 @@ const HeroPage = () => {
   }, []);
   console.log(hero);
 
+  function displayHero() {
+    return (
+      <main>
+        <h1 className="close-title">{hero.name}</h1>
+        {/* <p>
+          <em>{hero.description}</em>
+        </p> */}
+        {/* <span className="votes-counter">Votes: {snack.votes}</span> */}
+        <p className="snack-details-holder">
+          {/* {snack.vegetarian ? <span className="vegetarian icon">V</span> : ""}
+          {snack.healthy ? <span className="healthy icon">H</span> : ""} */}
+        </p>
+        <Link to="/HeroSearch">Back</Link>
+      </main>
+    );
+  }
+
   return (
     <main>
       <div>HeroPage</div>;

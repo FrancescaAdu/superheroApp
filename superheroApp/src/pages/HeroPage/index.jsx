@@ -1,89 +1,76 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState } from "react";
 
-const HeroPage = () => {
-  const { heroID } = useParams();
+function HeroPage() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [superheroData, setSuperheroData] = useState(null);
+  const [error, setError] = useState("");
 
-  const { hero, setHero } = useState({});
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
-  useEffect(() => {
-    setLoading(true);
-    async function loadHero() {
-      const response = fetch(
-        `https://www.superheroapi.com/api.php/7192351204124640/${heroID}`
-      );
-      const data = await (await response).json();
-      setHero(data);
-      setLoading(false);
+  const handleSearch = () => {
+    if (searchQuery.trim() === "") {
+      setError("Please enter a superhero name or ID");
+      setSuperheroData(null);
+      return;
     }
-    loadHero();
-  }, []);
-  console.log(hero);
 
-  function displayHero() {
-    return (
-      <main>
-        <h1 className="close-title">{hero.name}</h1>
-        {/* <p>
-          <em>{hero.description}</em>
-        </p> */}
-        {/* <span className="votes-counter">Votes: {snack.votes}</span> */}
-        <p className="snack-details-holder">
-          {/* {snack.vegetarian ? <span className="vegetarian icon">V</span> : ""}
-          {snack.healthy ? <span className="healthy icon">H</span> : ""} */}
-        </p>
-        <Link to="/HeroSearch">Back</Link>
-      </main>
-    );
-  }
+    fetch(
+      `https://www.superheroapi.com/api.php/7192351204124640/search/${searchQuery}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.response === "success") {
+          setSuperheroData(data.results);
+          setError("");
+        } else {
+          setSuperheroData(null);
+          setError("Superhero not found");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setError("Error occurred while fetching data");
+        setSuperheroData(null);
+      });
+  };
 
   return (
-    <main>
-      <div>HeroPage</div>;
-    </main>
+    <div className="App">
+      <h1>Superhero Search</h1>
+      <div className="search-container">
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={handleChange}
+          placeholder="Enter superhero name or ID"
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
+      {error && <p className="error">{error}</p>}
+      <div className="cards-container">
+        {superheroData &&
+          superheroData.map((superhero) => (
+            <div className="card" key={superhero.id}>
+              <h2>{superhero.name}</h2>
+              <img src={superhero.image.url} alt={superhero.name} />
+              <p>Full Name: {superhero.biography["full-name"]}</p>
+              <p>Aliases: {superhero.biography.aliases.join(", ")}</p>
+              <p>Publisher: {superhero.biography.publisher}</p>
+              <p>Powerstats:</p>
+              <ul>
+                {Object.entries(superhero.powerstats).map(([stat, value]) => (
+                  <li key={stat}>
+                    {stat}: {value}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+      </div>
+    </div>
   );
-};
+}
 
 export default HeroPage;
-
-// const { snackId } = useParams();
-
-//   const [loading, setLoading] = useState(false);
-//   const [snack, setSnack] = useState({});
-
-//   useEffect(() => {
-//     setLoading(true);
-//     async function loadSnack() {
-//       const response = fetch(`http://localhost:3000/snacks/${snackId}`);
-//       const data = await (await response).json();
-//       setSnack(data);
-//       setLoading(false);
-//     }
-
-//     loadSnack();
-//   }, []);
-
-//   function displaySnack() {
-//     return (
-//       <main>
-//         <h1 className="close-title">{snack.name}</h1>
-//         <p>
-//           <em>{snack.description}</em>
-//         </p>
-//         <span className="votes-counter">Votes: {snack.votes}</span>
-//         <p className="snack-details-holder">
-//           {snack.vegetarian ? <span className="vegetarian icon">V</span> : ""}
-//           {snack.healthy ? <span className="healthy icon">H</span> : ""}
-//         </p>
-//         <Link to="/snacks">Back</Link>
-//       </main>
-//     );
-//   }
-
-//   return loading ? (
-//     <h2>
-//       <em>loading...</em>
-//     </h2>
-//   ) : (
-//     displaySnack()
-//   );

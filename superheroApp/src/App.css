@@ -25,3 +25,55 @@ nav .navbar-items-active {
   height: 10%;
   display: flex;
 }
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-family: "Bangers", cursive;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-container input {
+  padding: 10px;
+  margin-right: 10px;
+  width: 300px;
+}
+
+.search-container button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  margin: 10px;
+  width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.card img {
+  width: 100%;
+}

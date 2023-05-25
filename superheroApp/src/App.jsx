@@ -15,7 +15,7 @@ function App() {
       <Route path="/" element={<Header logo={reactLogo} />}>
         <Route index element={<Pages.HomePage />} />
         <Route path="/MyTeam" element={<Pages.MyTeam />} />
-        <Route path="/HeroSearch" element={<Pages.HeroSearch />} />
+        <Route path="/HeroSearch" element={<Pages.HeroPage />} />
       </Route>
       <Route path="*" element={<Pages.NotFoundPage />} />
     </Routes>

@@ -8,13 +8,13 @@ const Header = () => {
       <header className="content-header">
         <img className="logo" src={reactLogo} alt="SuperHero Logo" />
         <nav>
-          <NavLink className={"navbar-items"} to="/">
+          <NavLink className="navbar-items" to="/">
             Home
           </NavLink>
-          <NavLink className={"navbar-items"} to="/MyTeam">
+          <NavLink className="navbar-items" to="/MyTeam">
             Myteam
           </NavLink>
-          <NavLink className={"navbar-items"} to="/HeroSearch">
+          <NavLink className="navbar-items" to="/HeroSearch">
             SearchPage
           </NavLink>
         </nav>

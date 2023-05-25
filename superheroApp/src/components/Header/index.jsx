@@ -6,18 +6,15 @@ const Header = () => {
   return (
     <>
       <header className="content-header">
-        <img className="logo" src={reactLogo} alt="SuperHero Logo" />
-        <nav>
+        <nav className="top-nav">
           <NavLink className="navbar-items" to="/">
             Home
           </NavLink>
           <NavLink className="navbar-items" to="/MyTeam">
             Myteam
           </NavLink>
-          <NavLink className="navbar-items" to="/HeroSearch">
-            SearchPage
-          </NavLink>
         </nav>
+        <img className="logo" src={reactLogo} alt="SuperHero Logo" />
       </header>
       <Outlet />
     </>

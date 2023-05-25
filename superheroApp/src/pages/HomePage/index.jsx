@@ -1,11 +1,10 @@
 import React from "react";
-import { HeroCard, HeroFilter } from "../../components";
+import HeroPage from "../HeroPage";
 
 const HomePage = () => {
   return (
     <main>
-      <h1>Home Page</h1>
-      <HeroCard />
+      <HeroPage />
     </main>
   );
 };

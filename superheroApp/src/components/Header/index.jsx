@@ -1,22 +1,20 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-
-const styles = ({ isActive }) => ({ color: isActive ? "#2B061E" : "#875053" });
+import reactLogo from "../../assets/superhero.png";
 
 const Header = () => {
   return (
     <>
-      <header>
+      <header className="content-header">
+        <img className="logo" src={reactLogo} alt="SuperHero Logo" />
         <nav>
-          <NavLink to="/" styles={styles}>
+          <NavLink className={"navbar-items"} to="/">
             Home
           </NavLink>
-          <br />
-          <NavLink to="/MyTeam" styles={styles}>
+          <NavLink className={"navbar-items"} to="/MyTeam">
             Myteam
           </NavLink>
-          <br />
-          <NavLink to="/HeroSearch" styles={styles}>
+          <NavLink className={"navbar-items"} to="/HeroSearch">
             SearchPage
           </NavLink>
         </nav>

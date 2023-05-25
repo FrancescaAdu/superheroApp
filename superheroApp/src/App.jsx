@@ -1,5 +1,5 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import reactLogo from "./assets/superhero.png";
 import viteLogo from "/vite.svg";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components";
@@ -12,10 +12,10 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Header />}>
+      <Route path="/" element={<Header logo={reactLogo} />}>
         <Route index element={<Pages.HomePage />} />
-        <Route path="/MyTeam" element={<Pages.MyTeamPage />} />
-        <Route path="/HeroSearch" element={<Pages.HeroSearchPage />} />
+        <Route path="/MyTeam" element={<Pages.MyTeam />} />
+        <Route path="/HeroSearch" element={<Pages.HeroSearch />} />
       </Route>
       <Route path="*" element={<Pages.NotFoundPage />} />
     </Routes>

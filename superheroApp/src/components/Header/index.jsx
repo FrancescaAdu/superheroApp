@@ -11,8 +11,13 @@ const Header = () => {
           <NavLink to="/" styles={styles}>
             Home
           </NavLink>
+          <br />
           <NavLink to="/MyTeam" styles={styles}>
             Myteam
+          </NavLink>
+          <br />
+          <NavLink to="/HeroSearch" styles={styles}>
+            SearchPage
           </NavLink>
         </nav>
       </header>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import { Router, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Header } from "./components";
 import * as Pages from "./pages";
 
@@ -11,13 +11,14 @@ function App() {
   // const [count, setCount] = useState(0);
 
   return (
-    <Router>
+    <Routes>
       <Route path="/" element={<Header />}>
-        <Route index element={Pages.HomePage} />
-        <Route path="/myTeams" element={Pages.MyTeamPage} />
+        <Route index element={<Pages.HomePage />} />
+        <Route path="/MyTeam" element={<Pages.MyTeamPage />} />
+        <Route path="/HeroSearch" element={<Pages.HeroSearchPage />} />
       </Route>
       <Route path="*" element={<Pages.NotFoundPage />} />
-    </Router>
+    </Routes>
   );
 }
 
